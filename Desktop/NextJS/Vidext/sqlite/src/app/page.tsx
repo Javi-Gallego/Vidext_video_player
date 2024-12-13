@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useState } from "react";
-import { VideoPlayer } from "@/app/_components/videoplayer";
-import { MiniPlayer } from "@/app/_components/miniplayer";
+
+import ServerComponent from "@/app/_components/servercomponents";
+import ClientComponent from "@/app/_components/clientcomponents";
 import { LatestPost } from "@/app/_components/post";
 import { api, HydrateClient } from "@/trpc/server";
 
@@ -10,10 +10,20 @@ export default async function Home() {
 
   void api.post.getLatest.prefetch();
 
-  const [currentVideo, setCurrentVideo] = useState<string>("videos/Drone.mp4");
-
   return (
     <HydrateClient>
+      <ServerComponent>
+      <main className="flex min-h-screen flex-col items-center justify-center bg-[#fafaf9] text-white">
+        <div className="container flex flex-col items-center justify-center gap-6 px-4 py-10">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black">
+            Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
+          </h1>
+          <ClientComponent />
+        </div>
+      </main>
+      </ServerComponent>
+      
+      {/*
       <main className="flex min-h-screen flex-col items-center justify-center bg-[#fafaf9] text-white">
         <div className="container flex flex-col items-center justify-center gap-6 px-4 py-10">
           <h1 className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black">
@@ -26,7 +36,7 @@ export default async function Home() {
             <MiniPlayer src="/videos/Drone.mp4" onClick={setCurrentVideo}/>
             <MiniPlayer src="/videos/HUD.mp4" onClick={setCurrentVideo}/>
           </div>
-          {/*
+          
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
@@ -57,11 +67,12 @@ export default async function Home() {
             </p>
           </div>
 
-          <LatestPost />
-          */}
+          <LatestPost />         
 
         </div>
       </main>
+
+      */}
     </HydrateClient>
   );
 }
