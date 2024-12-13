@@ -31,7 +31,7 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ( {src, onClick} ) => {
       };
 
     return (
-        <div className="relative border rounded-md overflow-hidden w-[320] h-[180]" onClick={handleClick}>
+        <div className="relative border rounded-md overflow-hidden w-[320] h-[180] cursor-pointer" onClick={handleClick}>
             <video
                 ref = {videoRef}
                 src = {src}
