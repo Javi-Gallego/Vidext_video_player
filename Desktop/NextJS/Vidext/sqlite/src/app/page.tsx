@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import { VideoPlayer } from "@/app/_components/videoplayer";
 import { MiniPlayer } from "@/app/_components/miniplayer";
 import { LatestPost } from "@/app/_components/post";
@@ -9,6 +10,8 @@ export default async function Home() {
 
   void api.post.getLatest.prefetch();
 
+  const [currentVideo, setCurrentVideo] = useState<string>("videos/Drone.mp4");
+
   return (
     <HydrateClient>
       <main className="flex min-h-screen flex-col items-center justify-center bg-[#fafaf9] text-white">
@@ -17,11 +20,11 @@ export default async function Home() {
             Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
           </h1>
 
-          <VideoPlayer />
+          <VideoPlayer src={currentVideo}/>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <MiniPlayer src="/videos/Drone.mp4"/>
-            <MiniPlayer src="/videos/HUD.mp4"/>
+            <MiniPlayer src="/videos/Drone.mp4" onClick={setCurrentVideo}/>
+            <MiniPlayer src="/videos/HUD.mp4" onClick={setCurrentVideo}/>
           </div>
           {/*
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
