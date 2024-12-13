@@ -4,9 +4,10 @@ import React, { useRef } from "react"
 
 interface MiniPlayerProps {
     src: string
+    onClick: (src: string) => void
 }
 
-export const MiniPlayer: React.FC<MiniPlayerProps> = ( {src} ) => {
+export const MiniPlayer: React.FC<MiniPlayerProps> = ( {src, onClick} ) => {
 
     const videoRef = React.useRef<HTMLVideoElement>(null)
 
@@ -22,16 +23,23 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ( {src} ) => {
         }
     }
 
+    const handleClick = () => {
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0
+        }
+        onClick(src)
+      };
+
     return (
-        <div className="relative border rounded-md overflow-hidden w-[320] h-[180]">
-        <video
-            ref = {videoRef}
-            src = {src}
-            className="w-full h-full object-cover"
-            onMouseEnter = {handleMouseEnter}
-            onMouseLeave = {handleMouseLeave}
-            muted
-        ></video>
+        <div className="relative border rounded-md overflow-hidden w-[320] h-[180]" onClick={handleClick}>
+            <video
+                ref = {videoRef}
+                src = {src}
+                className="w-full h-full object-cover"
+                onMouseEnter = {handleMouseEnter}
+                onMouseLeave = {handleMouseLeave}
+                muted
+            ></video>
         </div>
     )
 }

@@ -11,6 +11,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
         <video
             controls
             src={src}
+            autoPlay
         ></video>
         </div>
     )
