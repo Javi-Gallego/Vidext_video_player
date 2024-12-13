@@ -1,5 +1,6 @@
 import Link from "next/link";
-
+import { VideoPlayer } from "@/app/_components/videoplayer";
+import { MiniPlayer } from "@/app/_components/miniplayer";
 import { LatestPost } from "@/app/_components/post";
 import { api, HydrateClient } from "@/trpc/server";
 
@@ -10,11 +11,19 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
+      <main className="flex min-h-screen flex-col items-center justify-center bg-[#fafaf9] text-white">
+        <div className="container flex flex-col items-center justify-center gap-6 px-4 py-10">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black">
+            Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
           </h1>
+
+          <VideoPlayer />
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
+            <MiniPlayer src="/videos/Drone.mp4"/>
+            <MiniPlayer src="/videos/HUD.mp4"/>
+          </div>
+          {/*
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
@@ -46,6 +55,8 @@ export default async function Home() {
           </div>
 
           <LatestPost />
+          */}
+
         </div>
       </main>
     </HydrateClient>
