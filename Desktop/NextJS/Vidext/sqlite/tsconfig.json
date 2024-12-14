@@ -36,7 +36,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "prisma/**/*.ts", "src/**/*.ts", "src/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
