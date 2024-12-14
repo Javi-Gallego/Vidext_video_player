@@ -4,9 +4,11 @@ import ServerComponent from "@/app/_components/servercomponents";
 import ClientComponent from "@/app/_components/clientcomponents";
 import { LatestPost } from "@/app/_components/post";
 import { api, HydrateClient } from "@/trpc/server";
+import { Video } from "@/interfaces/interface";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
+  const dbvideos: Video[] = await api.video.getAllVideos();
 
   void api.post.getLatest.prefetch();
 
@@ -18,7 +20,7 @@ export default async function Home() {
           <h1 className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black">
             Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
           </h1>
-          <ClientComponent />
+          <ClientComponent videos={dbvideos}/>
         </div>
       </main>
       </ServerComponent>
