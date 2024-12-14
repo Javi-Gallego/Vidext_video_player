@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { VideoPlayer } from "@/app/_components/videoplayer";
 import { MiniPlayer } from "@/app/_components/miniplayer";
+import { VideoBoard } from "@/app/_components/VideoBoard";
 
 export function ClientComponent() {
   const [currentVideo, setCurrentVideo] = useState<string>("videos/Drone.mp4");
@@ -16,6 +17,7 @@ export function ClientComponent() {
         <MiniPlayer src="/videos/Wolf.mp4" onClick={setCurrentVideo} />
         <MiniPlayer src="/videos/Genesis.mp4" onClick={setCurrentVideo} />
         <MiniPlayer src="/videos/Rain.mp4" onClick={setCurrentVideo} />
+        <VideoBoard />
       </div>
     </div>
   );

@@ -22,8 +22,13 @@ export const videoRouter = createTRPCRouter({
     return video ?? null;
   }),
 
+  //getAllVideos: publicProcedure.query(async ({ ctx }) => {
+  //  return ctx.db.video.findMany();
+  //}),
+
   getAllVideos: publicProcedure.query(async ({ ctx }) => {
-    return ctx.db.video.findMany();
+    const videos = await ctx.db.video.findMany();
+    return videos;
   }),
 
   updateVideo: publicProcedure
