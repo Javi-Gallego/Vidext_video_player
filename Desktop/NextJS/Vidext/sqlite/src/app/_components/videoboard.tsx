@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { MiniPlayer } from "./miniplayer"
 import { Video, VideoBoardProps } from "@/interfaces/interface"
 import { LikeIcon } from "./likeicon"
