@@ -9,4 +9,19 @@ export interface Video{
 
 export interface VideoBoardProps {
     videos: Video[];
+    onClick: (src: string) => void;
 }
+
+export interface ClientComponentProps {
+    videos: Video[];
+}
+
+export interface MiniPlayerProps {
+    src: string
+    onClick: (src: string) => void
+}
+
+export interface LikeIconProps {
+    color1: string;
+    color2: string;
+  }

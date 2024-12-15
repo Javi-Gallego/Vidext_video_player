@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { useRef } from "react"
 import { MiniPlayerProps } from "@/interfaces/interface"
@@ -19,13 +19,13 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ( {src, onClick} ) => {
         }
     }
 
-    const handleClick = () => {
+    const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        event.stopPropagation()
         if (videoRef.current) {
           videoRef.current.currentTime = 0
         }
-        console.log("src: ", src)
         onClick(src)
-      };
+    }
 
     return (
         <div className="relative border rounded-md overflow-hidden aspect-w-16 aspect-h-9 cursor-pointer w-full" onClick={handleClick}>

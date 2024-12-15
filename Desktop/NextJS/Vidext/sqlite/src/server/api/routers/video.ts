@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from "zod"
 
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "@/server/api/trpc"
 
 export const videoRouter = createTRPCRouter({
   createVideo: publicProcedure
@@ -11,24 +11,12 @@ export const videoRouter = createTRPCRouter({
           name: input.name,
           path: input.path,
         },
-      });
+      })
     }),
 
-  getLatestVideo: publicProcedure.query(async ({ ctx }) => {
-    const video = await ctx.db.video.findFirst({
-      orderBy: { createdAt: "desc" },
-    });
-
-    return video ?? null;
-  }),
-
-  //getAllVideos: publicProcedure.query(async ({ ctx }) => {
-  //  return ctx.db.video.findMany();
-  //}),
-
   getAllVideos: publicProcedure.query(async ({ ctx }) => {
-    const videos = await ctx.db.video.findMany();
-    return videos;
+    const videos = await ctx.db.video.findMany()
+    return videos
   }),
 
   updateVideo: publicProcedure
@@ -40,6 +28,28 @@ export const videoRouter = createTRPCRouter({
           views: input.views,
           likes: input.likes,
         },
-      });
+      })
     }),
-});
+
+  incrementViews: publicProcedure
+    .input(z.object({ path: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const video = await ctx.db.video.findFirst({
+        where: { path: input.path },
+      })
+
+      if (!video) {
+        throw new Error("Video not found");
+      }
+
+      return ctx.db.video.update({
+        where: { id: video.id },
+        data: {
+          views: {
+            increment: 1,
+          },
+        },
+      })
+    }),
+
+})
