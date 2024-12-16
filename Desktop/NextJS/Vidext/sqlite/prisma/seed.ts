@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function main() {
   await prisma.video.createMany({
@@ -36,16 +36,50 @@ async function main() {
         likes: 50,
       },
     ],
-  });
+  })
 
-  console.log("Seed data created successfully!");
+  await prisma.user.createMany({
+    data: [
+      {
+        name: "Admin",
+        password: "123456",
+      },
+      {
+        name: "Vidext",
+        password: "123456",
+      },
+    ],
+  })
+
+  await prisma.videoLikes.createMany({
+    data: [
+      {
+        userId: 1,
+        videoId: 1,
+      },
+      {
+        userId: 1,
+        videoId: 2,
+      },
+      {
+        userId: 2,
+        videoId: 3,
+      },
+      {
+        userId: 2,
+        videoId: 4,
+      },
+    ],
+  })
+
+  console.log("Seed data created successfully!")
 }
 
 main()
   .catch((e) => {
-    console.error(e);
-    process.exit(1);
+    console.error(e)
+    process.exit(1)
   })
   .finally(async () => {
-    await prisma.$disconnect();
-  });
+    await prisma.$disconnect()
+  })

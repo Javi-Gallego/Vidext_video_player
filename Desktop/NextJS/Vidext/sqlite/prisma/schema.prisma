@@ -16,7 +16,8 @@ model Video {
     path      String   @unique
     views     Int      @default(0)
     likes     Int      @default(0)
-    createdAt DateTime @default(now())    
+    createdAt DateTime @default(now())   
+    videoLikes VideoLikes[] 
 }
 
 model Post {
@@ -26,4 +27,21 @@ model Post {
     updatedAt DateTime @updatedAt
 
     @@index([name])
+}
+
+model User {
+  id       Int        @id @default(autoincrement())
+  name     String
+  password String
+  videoLikes VideoLikes[]
+}
+
+model VideoLikes {
+  userId  Int
+  videoId Int
+  user    User   @relation(fields: [userId], references: [id])
+  video   Video  @relation(fields: [videoId], references: [id])
+
+  @@id([userId, videoId])
+  @@unique([userId, videoId])
 }
