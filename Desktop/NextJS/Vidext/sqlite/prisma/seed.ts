@@ -42,11 +42,11 @@ async function main() {
     data: [
       {
         name: "Admin",
-        password: "123456",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
       },
       {
         name: "Vidext",
-        password: "123456",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
       },
     ],
   })

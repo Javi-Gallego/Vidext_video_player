@@ -40,4 +40,7 @@ CREATE UNIQUE INDEX "Video_path_key" ON "Video"("path");
 CREATE INDEX "Post_name_idx" ON "Post"("name");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_name_key" ON "User"("name");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "VideoLikes_userId_videoId_key" ON "VideoLikes"("userId", "videoId");
