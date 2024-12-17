@@ -25,7 +25,6 @@ export function ClientComponent( {videos}: ClientComponentProps ) {
   }, [fetchedVideos])
 
   const handleClick = (src: string) => {
-    console.log("ClientComponent click")
     updateViews.mutateAsync({path: src})
     setCurrentVideo(src)
   }

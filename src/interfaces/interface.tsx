@@ -24,4 +24,14 @@ export interface MiniPlayerProps {
 export interface LikeIconProps {
     color1: string;
     color2: string;
-  }
+}
+
+export interface ArrayLikesProps {
+    userId: number;
+    videoId: number;
+}
+
+export interface CountLikesProps {
+    videoId: number;
+    likeCount: number;
+}

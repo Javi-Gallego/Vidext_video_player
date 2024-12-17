@@ -20,17 +20,40 @@ const PlayerPage = () => {
 
   const { data: dbvideos, isLoading, error} = api.video.getAllVideos.useQuery<Video[]>()
 
+  if (isLoading) {
+    return (
+      <div>
+        <NavBar />
+        <main className="flex min-h-full flex-col items-center justify-center bg-[#fafaf9] text-white">
+          <div className="container flex flex-col items-center justify-center gap-4 px-4 py-4">
+            <p>Loading...</p>
+          </div>
+        </main>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div>
+        <NavBar />
+        <main className="flex min-h-full flex-col items-center justify-center bg-[#fafaf9] text-white">
+          <div className="container flex flex-col items-center justify-center gap-4 px-4 py-4">
+            <p>Error loading videos: {error.message}</p>
+          </div>
+        </main>
+      </div>
+    )
+  }
+  
   return (
     <div>
       <NavBar />
-            <main className="flex min-h-screen flex-col items-center justify-center bg-[#fafaf9] text-white">
-              <div className="container flex flex-col items-center justify-center gap-6 px-4 py-10">
-                <h1 className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black">
-                  Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
-                </h1>
-                <ClientComponent videos={dbvideos ?? []}/>
-              </div>
-            </main>     
+        <main className="flex min-h-full flex-col items-center justify-center bg-[#fafaf9] text-white">
+          <div className="container flex flex-col items-center justify-center gap-4 px-4 py-4">
+            <ClientComponent videos={dbvideos ?? []}/>
+          </div>
+        </main>     
     </div>
   )
 }

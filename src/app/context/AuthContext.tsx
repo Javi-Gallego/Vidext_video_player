@@ -1,11 +1,18 @@
 "use client"
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 
 interface AuthContextType {
   isLoggedIn: boolean
   login: (name:string, password:string) => Promise<void>
   logout: () => void
+}
+
+interface CustomJwtPayload {
+  userId: string
+  iat: number
+  exp: number
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -15,19 +22,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (name: string, password: string) => {
     try {
-      console.log("llego aqui 1")
-      //const response = await axios.post('../api/login', { name, password })
       const response = await axios.post("/api/login", { name, password })
-      console.log("llego aqui 2")
+
       if (response.status === 200) {
         setIsLoggedIn(true)
+        const decodedToken: CustomJwtPayload = jwtDecode(response.data.token)
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('name', name)
-      } else {
-        console.error('NOT 200:', response.data.message)
-      }
+        localStorage.setItem('userId', decodedToken.userId)
+      } 
     } catch (error) {
-      console.log("llego aqui 3")
       console.error('Login failed:', error)
     }
   };
@@ -36,6 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoggedIn(false);
     localStorage.removeItem('token')
     localStorage.removeItem('name')
+    localStorage.removeItem('userId')
   };
 
   return (
