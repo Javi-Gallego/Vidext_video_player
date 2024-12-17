@@ -2,18 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
-
-interface AuthContextType {
-  isLoggedIn: boolean
-  login: (name:string, password:string) => Promise<void>
-  logout: () => void
-}
-
-interface CustomJwtPayload {
-  userId: string
-  iat: number
-  exp: number
-}
+import { AuthContextType, CustomJwtPayload } from '@/interfaces/interface'
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
@@ -34,7 +23,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       console.error('Login failed:', error)
     }
-  };
+  }
 
   const logout = () => {
     setIsLoggedIn(false);

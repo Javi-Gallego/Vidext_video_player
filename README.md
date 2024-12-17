@@ -1,6 +1,6 @@
 # Vidext Player
 
-This is a technical test for Vidext in which we have a player. We can select from a variety of videos that have view and like counts.
+This is a technical test for Vidext in which we have a player. We can select from a variety of videos that have view and like counts. The project has a similar style to the website [vidext.io/es](https://vidext.io/es) so I choose the same colors.
 
 ## Content 📝
   <ol>
@@ -31,13 +31,18 @@ This is a technical test for Vidext in which we have a player. We can select fro
 
 1. Clone the repository
 ` $ git clone https://github.com/Javi-Gallego/Vidext_video_player.git `
-2. Install dependencies
+2. Go to root dir
+` $ cd Vidext_video_player `
+3. Create .env file in root and copy content of .env.example
+4. Install dependencies
 ` $ npm install `
-3. Generate Prisma client
-` $ npx prisma generate `
-4. Seed database
+5. Generate migrations
+` $ npx prisma migrate dev --name init `
+6. Generate prisma client
+` $ npx prisma generate`
+6. Seed database
 ` $ npm run seed `
-3. Run NextJS project
+7. Run project
 ` $ npm run dev `
 
 Credentials
@@ -46,28 +51,68 @@ Credentials
     "password": "123456"
 ```
 
-## What's next? How do I make an app with this?
+To check how db looks like in the browser.
+` $ npx prisma studio `
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Endpoints
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### Auth Router
+- **POST /auth.login**
+  - **Description**: Logs in with username and password, and returns a JWT token. Saves some data in the localStorage for session purposes
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- **POST /auth.logout**
+  - **Description**: Logs out the current user. A log out button appears at the right upper corner once a user is logged. Removes data from localStorage
+<center><img src="./public/logout.png"/></center>
 
-## Learn More
+### Video Like Router
+- **POST /videoLike.addLike**
+  - **Description**: Adds a like to a video. The like icon is empty and the method adds a new entry on the db
+  <center><img src="./public/Like.png"/></center>
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- **POST /videoLike.removeLike**
+  - **Description**: Removes a like from a video. The icon shows you already like the video and now the method invoqued has switched to remove from db
+  <center><img src="./public/Dislike.png"/></center>
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- **GET /videoLike.getAllLikes**
+  - **Description**: Retrieves all likes.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- **GET /videoLike.getLikesByVideo**
+  - **Description**: Retrieves the number of likes for each video.
 
-## How do I deploy this?
+- **GET /videoLike.getLikesByUser**
+  - **Description**: Retrieves the likes of a specific user.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Video Router
+- **POST /video.incrementViews**
+  - **Description**: Increments the view count of a video. Once you click on any video and starts playing in the player, the view counter changes
+  <center><img src="./public/Views1.png"/></center>
+  <center><img src="./public/Views2.png"/></center>
+
+- **GET /video.getAllVideos**
+  - **Description**: Retrieves all videos.
+
+- **GET /video.getVideoById**
+  - **Description**: Retrieves a video by its ID.
+
+## Problems solutions
+To ensure the like system works correctly, a login feature was added to the page. This allows us to track which user has liked a video and prevents them from liking it again. Instead, clicking the like button again removes the like. This change required modifications to the database, including adding a `users` table, removing the `likes` field from the `videos` table, and adding an intermediate `users-videos` table.
+
+To avoid any person entering the player page, the navbar changes when a user is logged or not
+
+<center><img src="./public/NavBar1.png"/></center>
+<center><img src="./public/NavBar2.png"/></center>
+
+## Development:
+
+``` js
+ const developer = "Javier Gallego";
+
+ console.log("Desarrollado por: " + developer);
+```  
+
+## Contact
+<div align="center">
+<a href = "mailto:galgar@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/javier-gallego-dev"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+<a href="https://github.com/Javi-Gallego"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
+</div>
