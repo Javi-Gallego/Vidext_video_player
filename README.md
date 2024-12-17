@@ -1,6 +1,50 @@
-# Create T3 App
+# Vidext Player
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a technical test for Vidext in which we have a player. We can select from a variety of videos that have view and like counts.
+
+## Content 📝
+  <ol>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#local-installation">Installation</a></li>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#problems-solutions">Problems solutions</a></li>
+    <li><a href="#future-features">Future features</a></li>
+    <li><a href="#development">Development</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+
+## Stack
+
+<div align="center">
+
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![tRPC](https://img.shields.io/badge/tRPC-%232596BE.svg?style=for-the-badge&logo=tRPC&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+
+</div>
+
+
+## Local installation
+
+1. Clone the repository
+` $ git clone https://github.com/Javi-Gallego/Vidext_video_player.git `
+2. Install dependencies
+` $ npm install `
+3. Generate Prisma client
+` $ npx prisma generate `
+4. Seed database
+` $ npm run seed `
+3. Run NextJS project
+` $ npm run dev `
+
+Credentials
+``` js
+    "user": "Vidext",
+    "password": "123456"
+```
 
 ## What's next? How do I make an app with this?
 

@@ -15,7 +15,6 @@ model Video {
     name      String
     path      String   @unique
     views     Int      @default(0)
-    likes     Int      @default(0)
     createdAt DateTime @default(now())   
     videoLikes VideoLikes[] 
 }

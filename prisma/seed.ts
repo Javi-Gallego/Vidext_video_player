@@ -9,31 +9,26 @@ async function main() {
         name: "Drone Footage",
         path: "/videos/Drone.mp4",
         views: 100,
-        likes: 10,
       },
       {
         name: "Futuristic HUD",
         path: "/videos/HUD.mp4",
-        views: 200,
-        likes: 20,
+        views: 50,
       },
       {
         name: "THX Trailer",
         path: "/videos/Genesis.mp4",
-        views: 300,
-        likes: 30,
+        views: 80,
       },
       {
         name: "Howling wolf",
         path: "/videos/Wolf.mp4",
-        views: 400,
-        likes: 40,
+        views: 120,
       },
       {
         name: "Relaxin rain",
         path: "/videos/Rain.mp4",
-        views: 500,
-        likes: 50,
+        views: 60,
       },
     ],
   })
@@ -46,6 +41,38 @@ async function main() {
       },
       {
         name: "Vidext",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User1",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User2",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User3",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User4",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User5",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User6",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User7",
+        password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
+      },
+      {
+        name: "User8",
         password: "$2a$10$CT2KQa0v1HOKIxWX5BzNou4p6agj69W3tp9yt3KYU32QKoJnqDL9S",
       },
     ],
@@ -68,6 +95,70 @@ async function main() {
       {
         userId: 2,
         videoId: 4,
+      },
+      {
+        userId: 3,
+        videoId: 1,
+      },
+      {
+        userId: 3,
+        videoId: 2,
+      },
+      {
+        userId: 3,
+        videoId: 3,
+      },
+      {
+        userId: 3,
+        videoId: 4,
+      },
+      {
+        userId: 3,
+        videoId: 5,
+      },
+      {
+        userId: 4,
+        videoId: 1,
+      },
+      {
+        userId: 4,
+        videoId: 3,
+      },
+      {
+        userId: 5,
+        videoId: 1,
+      },
+      {
+        userId: 5,
+        videoId: 4,
+      },
+      {
+        userId: 6,
+        videoId: 1,
+      },
+      {
+        userId: 7,
+        videoId: 1,
+      },
+      {
+        userId: 7,
+        videoId: 3,
+      },
+      {
+        userId: 7,
+        videoId: 4,
+      },
+      {
+        userId: 8,
+        videoId: 1,
+      },
+      {
+        userId: 9,
+        videoId: 1,
+      },
+      {
+        userId: 10,
+        videoId: 1,
       },
     ],
   })
