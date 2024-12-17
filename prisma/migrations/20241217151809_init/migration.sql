@@ -4,7 +4,6 @@ CREATE TABLE "Video" (
     "name" TEXT NOT NULL,
     "path" TEXT NOT NULL,
     "views" INTEGER NOT NULL DEFAULT 0,
-    "likes" INTEGER NOT NULL DEFAULT 0,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
