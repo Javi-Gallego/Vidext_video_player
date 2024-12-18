@@ -8,10 +8,10 @@ export const NavBar = () => {
 
   return (
     <nav className="flex w-full justify-between items-center p-3 bg-[#fafaf9] text-black">
-      <div className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black w-3/10">
+      <div className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black w-2/5">
             Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
       </div>
-      <div className="flex justify-start gap-4 w-3/5 text-black font-bold">
+      <div className="flex justify-start gap-4 w-1/2 text-black font-bold">
         {!isLoggedIn && <Link href="/">
           Login
         </Link>}

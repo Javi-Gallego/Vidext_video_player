@@ -89,7 +89,7 @@ export const VideoBoard: React.FC<VideoBoardProps> = ({ videos, onClick }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-black w-full">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 text-black w-full">
       {videos?.map((video: Video) => {
         const isLiked = arrayLikes.some((like) => like.videoId === video.id)
         const numberOfLikes = countLikes.filter((like) => like.videoId === video.id)
