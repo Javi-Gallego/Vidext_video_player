@@ -30,7 +30,6 @@ export const VideoBoard: React.FC<VideoBoardProps> = ({ videos, onClick }) => {
   }
 
   useEffect(() => {
-    //fetchLikes()
     if (!userId || userId === '0') {
       console.error('User ID not found')
       return
@@ -49,17 +48,6 @@ export const VideoBoard: React.FC<VideoBoardProps> = ({ videos, onClick }) => {
         setCountLikes(result.data)
       }
     })
-  }
-
-  const fetchLikes = async () => {
-    if (!userId || userId === '0') {
-      console.error('User ID not found')
-      return
-    }
-    const result = await getAllLikesQuery.refetch()
-    if (result.data) {
-      setArrayLikes(result.data)
-    }
   }
 
   const addLike = async (videoId: number) => {
