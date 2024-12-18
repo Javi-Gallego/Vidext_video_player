@@ -11,7 +11,7 @@ export const NavBar = () => {
       <div className="text-2xl font-bold tracking-tight sm:text-[3rem] text-black w-3/10">
             Vidext <span className="bg-[#c2f902] text-black rounded-full px-10">Player</span>
       </div>
-      <div className="flex justify-start gap-4 w-3/5 text-black">
+      <div className="flex justify-start gap-4 w-3/5 text-black font-bold">
         {!isLoggedIn && <Link href="/">
           Login
         </Link>}

@@ -1,8 +1,17 @@
+"use client"
+
+import { useRouter } from 'next/navigation'
 import { NavBar } from '../_components/navbar'
 
 const InstructionsPage = () => {
+  const router = useRouter()
+
+  const handleClick = (id: number) => {
+    router.push(`/instructions/${id}`)
+  }
+
   return (
-    <div>
+    <div className="bg-[#fafaf9] h-screen">
       <NavBar />
       <div className="flex justify-center items-center font-bold p-4">Instructions</div>
       <div className="flex justify-center items-center p-4">
@@ -18,7 +27,17 @@ const InstructionsPage = () => {
       </div>
       <div className="flex justify-center items-center p-4">
         Once you are logged in you will be redirected to the video player page
-      </div>     
+      </div>
+      <div className="flex justify-center items-center p-4">
+        If you want to use other users credentials you can click on the user you want
+      </div>
+      <div className="flex justify-center items-center p-4 space-x-5">
+        <div className="cursor-pointer font-bold" onClick={ () => handleClick(1)}>User 1</div>
+        <div className="cursor-pointer font-bold" onClick={ () => handleClick(2)}>User 2</div>
+        <div className="cursor-pointer font-bold" onClick={ () => handleClick(3)}>User 3</div>
+        <div className="cursor-pointer font-bold" onClick={ () => handleClick(4)}>User 4</div>
+        <div className="cursor-pointer font-bold" onClick={ () => handleClick(5)}>User 5</div>
+      </div>
     </div>
   )
 }

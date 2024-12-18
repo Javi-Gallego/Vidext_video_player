@@ -102,6 +102,18 @@ To avoid any person entering the player page, the navbar changes when a user is 
 <center><img src="./public/NavBar1.png"/></center>
 <center><img src="./public/NavBar2.png"/></center>
 
+This is not a problem but I did not make use of the dinamic Next router so I used the Instructions page to make a very simple use of it. You can click on the user you want to know the credentials
+
+<center><img src="./public/DinamicRouter1.png"/></center>
+
+Each user has an ID and is passed as a parameter to go to the new route
+
+<center><img src="./public/DinamicRouter2.png"/></center>
+
+On the the new page we retrieve the parameter and make use of it
+
+<center><img src="./public/DinamicRouter3.png"/></center>
+
 ## Development:
 
 ``` js
