@@ -99,7 +99,7 @@ To ensure the like system works correctly, a login feature was added to the page
 
 To avoid any person entering the player page, the navbar changes when a user is logged or not
 
-<center><img src="./public/NavBar1.png"/></center>
+<center><img src="./public/Navbar1.png"/></center>
 <center><img src="./public/NavBar2.png"/></center>
 
 This is not a problem but I did not make use of the dinamic Next router so I used the Instructions page to make a very simple use of it. You can click on the user you want to know the credentials
